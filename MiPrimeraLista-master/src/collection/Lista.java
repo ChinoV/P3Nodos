@@ -37,7 +37,7 @@ public class Lista {
 //    <h1>Add</h1>
 //    <p>Agrega un elemento al final de la lista.</p>
     
-    public boolean add(int data) {
+    public boolean addLast(int data) {
         Nodo nuevo = new Nodo(data);
         if (0 == size) {
             cabeza = nuevo;
@@ -91,11 +91,7 @@ public class Lista {
         }
         return index;
     }
-    
-    
-    
-    
-    ////////////////////Mejorar metodo GET de jose pablo, revisar el toString y
+     
     public int getData(int index) {
         
         if (index >= size) {
@@ -142,42 +138,28 @@ public class Lista {
         return size == 0;
     }
     
-    public boolean remove(int index) {
-        if (index >= 0 && index <= size-1) {
-            
-            if (0 == index) {
-                cabeza = cabeza.getSig();
-                
-            } else if (size-1 == index) {
-                int cont = 0;
-                
-                Nodo aux = cabeza;
-                
-                while(cont < index-1) {
-                    aux = aux.getSig();
-                    ++cont;
-                }
-                
-                aux.setSig(null);
-                ultimo = aux;
-                
-            } else {
-                int cont = 0;
-                
-                Nodo aux = cabeza;
-                
-                while (cont < index -1) {
-                    aux = aux.getSig();
-                    ++cont;
-                }
-                
-                aux.setSig(aux.getSig().getSig());
-            }
-            --size;
-            return true;
-        } else {
+    public boolean remove(int index) 
+    {
+        if(index>size-1|| index<0){
             throw new IndexOutOfBoundsException();
         }
+        if(index==0)
+        {
+            this.cabeza=this.cabeza.getSig();
+            size--;
+            return true;
+        }
+        Nodo aux = this.cabeza; 
+        for (int i = 0; i < size; i++) {
+          if(index-1==i)
+          {
+              aux.setSig(aux.getSig().getSig()); 
+              size--;
+              return true;
+          }
+          aux=aux.getSig();
+        } 
+        return false;
     }
 
 }

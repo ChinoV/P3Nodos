@@ -2,16 +2,18 @@
 package miprimeralista;
 
 import collection.Lista;
+import collection.ListaCircular;
+import collection.ListaDoble;
  
-public class MiPrimeraLista {
+public class MiLista {
  
     public static void main(String[] args) {
         
-        Lista miLista = new Lista();
-        miLista.add(5);
-        miLista.add(1);
-        miLista.add(2);
-        miLista.add(7);
+        ListaDoble miLista = new ListaDoble();
+        miLista.addLast(0);
+        miLista.addLast(1);
+        
+        
 //        
 //        System.out.println(miLista.getSize());
 //        
@@ -24,8 +26,11 @@ public class MiPrimeraLista {
 //        System.out.println("-*ultimo*"+miLista.getUltimo().getDato());
 //        
         System.out.println("To String: " +miLista.toString());
-        System.out.println("IndexOf "+miLista.indexOf(7));
-        System.out.println("InIndex "+miLista.getData(2));
+        miLista.remove(1);
+        miLista.remove(0); 
+        System.out.println("To String: " +miLista.toString());
+//        System.out.println("IndexOf "+miLista.indexOf(7));
+//        System.out.println("InIndex "+miLista.getData(2));
 //        System.out.println(miLista.size());
 //        
 //        miLista.remove(3);
